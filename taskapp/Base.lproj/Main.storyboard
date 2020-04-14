@@ -18,9 +18,14 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="gMd-mu-uom">
                                 <rect key="frame" x="0.0" y="88" width="414" height="774"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <searchBar key="tableHeaderView" contentMode="redraw" id="bvR-FU-3Cg">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                    <textInputTraits key="textInputTraits"/>
+                                </searchBar>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" textLabel="87j-aq-O6b" detailTextLabel="EfO-CW-qAq" style="IBUITableViewCellStyleSubtitle" id="Crf-xz-maH">
-                                        <rect key="frame" x="0.0" y="28" width="414" height="55.5"/>
+                                        <rect key="frame" x="0.0" y="72" width="414" height="55.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Crf-xz-maH" id="FOX-Xb-I4Y">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="55.5"/>
@@ -63,6 +68,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="searchBar" destination="bvR-FU-3Cg" id="MvC-Sh-0wC"/>
                         <outlet property="tableView" destination="gMd-mu-uom" id="yiW-bU-6HD"/>
                         <segue destination="6SV-4U-ovS" kind="show" identifier="cellSegue" id="Ilf-G3-WZK"/>
                     </connections>
@@ -154,7 +160,7 @@
                     <navigationItem key="navigationItem" id="Wft-Lf-plT"/>
                     <connections>
                         <outlet property="categoryTextField" destination="lpA-DI-m2S" id="YD4-uw-3PO"/>
-                        <outlet property="cotentsTextView" destination="gFc-OK-XNF" id="Vu3-jv-NKg"/>
+                        <outlet property="contentsTextView" destination="gFc-OK-XNF" id="vTW-Ab-W4F"/>
                         <outlet property="datePicker" destination="BZh-fy-Ujb" id="M0u-t3-8Ak"/>
                         <outlet property="titleTextField" destination="1tV-Dd-OsN" id="jgW-8Q-cRm"/>
                     </connections>
