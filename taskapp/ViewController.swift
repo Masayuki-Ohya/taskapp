@@ -10,12 +10,10 @@ import UIKit
 import RealmSwift
 import UserNotifications
 
-class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource,UISearchBarDelegate {
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var searchBar: UISearchBar!
-    
-    var searchResult: Array<String> = []
     
     // Realmインスタンスを取得する
     let realm = try! Realm()
@@ -30,6 +28,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         // Do any additional setup after loading the view.
         tableView.delegate = self
         tableView.dataSource = self
+        searchBar.delegate = self
+        
     }
     
     // データの数（＝セルの数）を返すメソッド
@@ -45,8 +45,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         // Cellに値を設定する.  --- ここから ---
         let task = taskArray[indexPath.row]
         cell.textLabel?.text = task.title
-        cell.textLabel?.text = task.category
-
+        
+        
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy-MM-dd HH:mm"
 
@@ -119,8 +119,9 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         tableView.reloadData()
     }
     
-    var categoryResult = realm.objects(Task).filter("searchResult == %@", task)
-
-
+   func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+    var searchResult = realm.objects(Task.self).filter("searchText == %@", taskArray)
+    tableView.reloadData()
+    }
 }
 

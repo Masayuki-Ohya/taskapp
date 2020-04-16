@@ -68,7 +68,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="searchBar" destination="bvR-FU-3Cg" id="MvC-Sh-0wC"/>
+                        <outlet property="searchBar" destination="bvR-FU-3Cg" id="vCG-nm-XMn"/>
                         <outlet property="tableView" destination="gMd-mu-uom" id="yiW-bU-6HD"/>
                         <segue destination="6SV-4U-ovS" kind="show" identifier="cellSegue" id="Ilf-G3-WZK"/>
                     </connections>
