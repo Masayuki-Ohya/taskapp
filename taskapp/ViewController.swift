@@ -29,7 +29,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         tableView.delegate = self
         tableView.dataSource = self
         searchBar.delegate = self
-        
+        searchBar.showsCancelButton = true
     }
     
     // データの数（＝セルの数）を返すメソッド
@@ -61,7 +61,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         performSegue(withIdentifier: "cellSegue",sender: nil)
     }
-
+    
     // セルが削除が可能なことを伝えるメソッド
     func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath)-> UITableViewCell.EditingStyle {
         return .delete
@@ -122,6 +122,13 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
     taskArray = realm.objects(Task.self).filter("category == %@", searchText)
     tableView.reloadData()
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.text = ""
+        view.endEditing(true)
+        taskArray = try! Realm().objects(Task.self).sorted(byKeyPath: "date", ascending: true)
+        tableView.reloadData()
     }
     
 }
