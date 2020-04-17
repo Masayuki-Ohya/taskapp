@@ -120,8 +120,9 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
     
    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-    var searchResult = realm.objects(Task.self).filter("searchText == %@", taskArray)
+    taskArray = realm.objects(Task.self).filter("category == %@", searchText)
     tableView.reloadData()
     }
+    
 }
 
